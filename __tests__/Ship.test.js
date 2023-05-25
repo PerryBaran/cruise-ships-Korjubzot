@@ -1,7 +1,7 @@
 const Ship = require('../src/ships.js');
 
 describe ('constructor', () => {
-    it('checks that ship is object object', () => {
+    it('instantiates Ship object', () => {
         expect (new Ship('HMS Supply')).toBeInstanceOf(Object);
     })
 
@@ -24,4 +24,13 @@ describe ('constructor', () => {
 
         expect(ship.startingPassengers).toEqual(55);
     });
+
+    it('tests setSail function', () => {
+        const ship = new Ship('HMS Supply');
+        ship.startingPort = 'Spithead';
+
+        ship.setSail('Botany Bay');
+
+        expect(ship.startingPort).toEqual('Botany Bay');
+    })
 });
