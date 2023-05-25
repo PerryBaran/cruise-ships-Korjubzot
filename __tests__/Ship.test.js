@@ -1,4 +1,5 @@
 const Ship = require('../src/ships.js');
+const Port = require('../src/ships.js');
 
 describe ('constructor', () => {
     it('instantiates Ship object', () => {
@@ -29,8 +30,20 @@ describe ('constructor', () => {
         const ship = new Ship('HMS Supply');
         ship.startingPort = 'Spithead';
 
-        ship.setSail('Botany Bay');
+        ship.setSail();
 
-        expect(ship.startingPort).toEqual('Botany Bay');
+        expect(ship.startingPort).toBeFalsy();
     })
 });
+
+describe ('Port object', () => {
+    it('instantiates Port object', () => {
+        expect (new Port('Spithead')).toBeInstanceOf(Object);
+    })
+
+    it('checks name of Port', () => {
+        const port = new Port('Spithead');
+
+        expect(port.name).toEqual('Spithead');
+    })
+})
