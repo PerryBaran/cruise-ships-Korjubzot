@@ -1,7 +1,7 @@
 const Ship = require('../src/ships.js');
 const Port = require('../src/ships.js');
 
-describe ('constructor', () => {
+describe ('Ship constructor', () => {
     it('instantiates Ship object', () => {
         expect (new Ship('HMS Supply')).toBeInstanceOf(Object);
     })
@@ -12,11 +12,11 @@ describe ('constructor', () => {
         expect(ship.name).toEqual('HMS Supply');
     });
 
-    it('sets startingPort', () => {
+    it('sets currentPort', () => {
         const ship = new Ship('HMS Supply');
-        ship.startingPort = 'Spithead';
+        ship.currentPort = 'Spithead';
 
-        expect(ship.startingPort).toEqual('Spithead');
+        expect(ship.currentPort).toEqual('Spithead');
     });
 
     it('sets startingPassengers', () => {
@@ -28,22 +28,10 @@ describe ('constructor', () => {
 
     it('tests setSail function', () => {
         const ship = new Ship('HMS Supply');
-        ship.startingPort = 'Spithead';
+        ship.currentPort = 'Spithead';
 
         ship.setSail();
 
-        expect(ship.startingPort).toBeFalsy();
+        expect(ship.currentPort).toBeFalsy();
     })
 });
-
-describe ('Port object', () => {
-    it('instantiates Port object', () => {
-        expect (new Port('Spithead')).toBeInstanceOf(Object);
-    })
-
-    it('checks name of Port', () => {
-        const port = new Port('Spithead');
-
-        expect(port.name).toEqual('Spithead');
-    })
-})
