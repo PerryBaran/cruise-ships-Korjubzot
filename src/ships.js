@@ -6,6 +6,10 @@ function Port(name) {
     this.name = name;
 }
 
+ Ship.prototype.dock = function(port) {
+    this.currentPort = port;
+}
+
 Ship.prototype.setSail = function() {
     this.currentPort = null;
 }

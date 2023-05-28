@@ -1,5 +1,7 @@
 const Ship = require('../src/ships.js');
 const Port = require('../src/ships.js');
+const dock = require('../src/ships.js');
+
 
 describe ('constructor', () => {
     it('instantiates Ship object', () => {
@@ -35,5 +37,16 @@ describe ('constructor', () => {
         ship.setSail();
 
         expect(ship.currentPort).toBeFalsy();
+    })
+
+    it('can dock at a different port', () => {
+        const spithead = new Port('Spithead');
+        const ship = new Ship(spithead);
+
+        const botanyBay = new Port('Botany Bay');
+
+        ship.dock(botanyBay);
+
+        expect(ship.currentPort).toBe(botanyBay);
     })
 });
