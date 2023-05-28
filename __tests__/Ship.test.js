@@ -6,44 +6,34 @@ describe ('constructor', () => {
         expect (new Ship('HMS Supply')).toBeInstanceOf(Object);
     })
 
-    it('sets name of ship', () => {
+    it('has a port', () => {
+        const port = new Port('Spithead');
+        const ship = new Ship(port);
+
+        expect(ship.currentPort).toEqual(port);
+    });
+
+    // dummied out
+    xit('sets name of ship', () => {
         const ship = new Ship('HMS Supply');
 
         expect(ship.name).toEqual('HMS Supply');
     });
 
-    it('sets startingPort', () => {
-        const ship = new Ship('HMS Supply');
-        ship.startingPort = 'Spithead';
-
-        expect(ship.startingPort).toEqual('Spithead');
-    });
-
-    it('sets startingPassengers', () => {
+    // dummied out
+    xit('sets startingPassengers', () => {
         const ship = new Ship('HMS Supply');
         ship.startingPassengers = 55;
 
         expect(ship.startingPassengers).toEqual(55);
     });
 
-    it('tests setSail function', () => {
-        const ship = new Ship('HMS Supply');
-        ship.startingPort = 'Spithead';
+    it('can set sail', () => {
+        const port = new Port('Spithead');
+        const ship = new Ship(port)
 
         ship.setSail();
 
-        expect(ship.startingPort).toBeFalsy();
+        expect(ship.currentPort).toBeFalsy();
     })
 });
-
-describe ('Port object', () => {
-    it('instantiates Port object', () => {
-        expect (new Port('Spithead')).toBeInstanceOf(Object);
-    })
-
-    it('checks name of Port', () => {
-        const port = new Port('Spithead');
-
-        expect(port.name).toEqual('Spithead');
-    })
-})

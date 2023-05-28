@@ -1,8 +1,5 @@
-function Ship(name, startingPort, startingPassengers) {
-    this.name = name;
-    this.startingPort = startingPort;
-    this.startingPassengers = startingPassengers;
-    this.port;
+function Ship(currentPort) {
+    this.currentPort = currentPort;
 }
 
 function Port(name) {
@@ -10,7 +7,7 @@ function Port(name) {
 }
 
 Ship.prototype.setSail = function() {
-    this.startingPort = null;
+    this.currentPort = null;
 }
 
 module.exports = Ship, Port;
