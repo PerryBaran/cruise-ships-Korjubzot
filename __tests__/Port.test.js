@@ -1,4 +1,4 @@
-const {Port} = require('../src/ships.js');
+const {Ship, Port} = require('../src/ships.js');
 
 describe ('Port object', () => {
     it('instantiates Port object', () => {
@@ -10,5 +10,14 @@ describe ('Port object', () => {
         port.name = 'Spithead';
 
         expect(port.name).toEqual('Spithead');
+    })
+
+    it('adds a Ship to Port', () => {
+        const port = new Port('Spithead');
+        const ship = {};
+
+        port.addShip(ship);
+
+        expect(port.ships).toContain(ship);
     })
 })

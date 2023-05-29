@@ -18,13 +18,21 @@ Ship.prototype.setSail = function() {
     if (currentPortIndex === (itinerary.ports.length - 1)) {
         throw new Error('End of itinerary reached')
     }
-    
+
     this.previousPort = this.currentPort;
     this.currentPort = null;
 }
 
 function Port(name) {
     this.name = name;
+}
+
+Port.prototype.addShip = function(ship) {
+    if (!this.ships) {
+        this.ships = [];
+    }
+    
+    this.ships.push(ship);
 }
 
 module.exports = { Ship, Port };
