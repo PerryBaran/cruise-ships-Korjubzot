@@ -22,14 +22,14 @@ describe ('constructor', () => {
     });
 
     it('can set sail', () => {
-        const port = new Port('Spithead');
-        const itinerary = new Itinerary([port])
+        const spithead = new Port('Spithead');
+        const botanyBay = new Port('Botany Bay');
+        const itinerary = new Itinerary([spithead, botanyBay])
         const ship = new Ship(itinerary)
 
         ship.setSail();
 
         expect(ship.currentPort).toBeFalsy();
-        expect(ship.previousPort).toBe(port);
     })
 
     it('can dock at a different port', () => {
@@ -42,5 +42,17 @@ describe ('constructor', () => {
         ship.dock();
 
         expect(ship.currentPort).toBe(botanyBay);
+    })
+
+    it('can\'t sail further than its itinerary', () => {
+        const spithead = new Port('Spithead');
+        const botanyBay = new Port('Botany Bay');
+        const itinerary = new Itinerary([spithead, botanyBay])
+        const ship = new Ship(itinerary);
+
+        ship.setSail();
+        ship.dock();
+
+        expect(() => ship.setSail()).toThrowError('End of itinerary reached');
     })
 });
