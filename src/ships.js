@@ -1,17 +1,21 @@
-function Ship(currentPort) {
-    this.currentPort = currentPort;
+function Ship(itinerary) {
+    console.log(itinerary);
+    this.itinerary = itinerary;
+    this.currentPort = itinerary.ports[0];
+    this.previousPort = null;
+}
+
+Ship.prototype.dock = function(port) {
+    this.currentPort = port;
+}
+
+Ship.prototype.setSail = function() {
+    this.previousPort = this.currentPort;
+    this.currentPort = null;
 }
 
 function Port(name) {
     this.name = name;
 }
 
- Ship.prototype.dock = function(port) {
-    this.currentPort = port;
-}
-
-Ship.prototype.setSail = function() {
-    this.currentPort = null;
-}
-
-module.exports = Ship, Port;
+module.exports = { Ship, Port };
