@@ -31,8 +31,12 @@ Port.prototype.addShip = function(ship) {
     if (!this.ships) {
         this.ships = [];
     }
-    
+
     this.ships.push(ship);
+}
+
+Port.prototype.removeShip = function(ship) {
+    this.ships.pop(ship);
 }
 
 module.exports = { Ship, Port };

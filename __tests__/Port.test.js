@@ -20,4 +20,15 @@ describe ('Port object', () => {
 
         expect(port.ships).toContain(ship);
     })
+
+    it('can remove a ship from Port', () => {
+        const port = new Port('Spithead');
+        const Supply = {};
+        const Sirius = {};
+
+        port.addShip(Supply);
+        port.addShip(Sirius);
+
+        port.removeShip(Supply);
+    })
 })
