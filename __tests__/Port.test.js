@@ -12,23 +12,30 @@ describe ('Port', () => {
         expect(port.name).toEqual('Spithead');
     })
 
-    it('adds a Ship to Port', () => {
-        const port = new Port('Spithead');
-        const ship = {};
-
-        port.addShip(ship);
-
-        expect(port.ships).toContain(ship);
-    })
-
-    it('can remove a ship from Port', () => {
-        const port = new Port('Spithead');
-        const Supply = {};
-        const Sirius = {};
-
-        port.addShip(Supply);
-        port.addShip(Sirius);
-
-        port.removeShip(Supply);
+    describe('adds and removes ports', () => {
+        
+        let port;
+    
+        beforeEach(() => {
+            port = new Port('Spithead')
+        })
+    
+        it('adds a Ship to Port', () => {
+            const ship = {};
+    
+            port.addShip(ship);
+            
+            expect(port.ships).toContain(ship);
+        })
+    
+        it('can remove a ship from Port', () => {
+            const Supply = {};
+            const Sirius = {};
+    
+            port.addShip(Supply);
+            port.addShip(Sirius);
+    
+            port.removeShip(Supply);
+        })
     })
 })
