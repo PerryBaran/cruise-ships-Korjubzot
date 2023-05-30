@@ -2,6 +2,7 @@ function Ship(itinerary) {
     this.itinerary = itinerary;
     this.currentPort = itinerary.ports[0];
     this.previousPort = null;
+    this.currentPort.addShip(this);
 }
 
 Ship.prototype.dock = function() {
@@ -9,6 +10,8 @@ Ship.prototype.dock = function() {
     const previousPortIndex = itinerary.ports.indexOf(this.previousPort);
 
     this.currentPort = itinerary.ports[previousPortIndex + 1];
+
+    this.currentPort.addShip(this)
 }
 
 Ship.prototype.setSail = function() {
@@ -21,16 +24,26 @@ Ship.prototype.setSail = function() {
 
     this.previousPort = this.currentPort;
     this.currentPort = null;
+    //ship removes itself from a Ports [ships] array
+
+    if(this.currentPort) {
+        const ships = this.currentPort.ships;
+        const shipIndex = ships.indexOf(this);
+        if(shipIndex !== -1) {
+            ships.splice(shipIndex, 1);
+        }
+    }
 }
 
 function Port(name) {
     this.name = name;
+    this.ships= [];
 }
 
 Port.prototype.addShip = function(ship) {
-    if (!this.ships) {
-        this.ships = [];
-    }
+    // if (!this.ships) {
+    //     this.ships = [];
+    // }
 
     this.ships.push(ship);
 }

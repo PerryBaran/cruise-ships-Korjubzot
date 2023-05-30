@@ -13,6 +13,14 @@ describe ('constructor', () => {
         expect(ship).toBeInstanceOf(Object);
     })
 
+    it('gets added to port on instatiation', () => {
+        const port = new Port('Spithead');
+        const itinerary = new Itinerary([port]);
+        const ship = new Ship(itinerary);
+
+        expect(port.ships).toContain(ship);
+    })
+
     it('has a starting port', () => {
         const port = new Port('Spithead');
         const itinerary = new Itinerary([port]);
@@ -30,6 +38,7 @@ describe ('constructor', () => {
         ship.setSail();
 
         expect(ship.currentPort).toBeFalsy();
+        expect(spithead.ships).not.toContain([ship]);
     })
 
     it('can dock at a different port', () => {
@@ -42,6 +51,7 @@ describe ('constructor', () => {
         ship.dock();
 
         expect(ship.currentPort).toBe(botanyBay);
+        expect(botanyBay.ships).toContain(ship);
     })
 
     it('can\'t sail further than its itinerary', () => {
