@@ -1,6 +1,6 @@
 const {Ship, Port} = require('../src/ships.js');
 
-describe ('Port object', () => {
+describe ('Port', () => {
     it('instantiates Port object', () => {
         expect(new Port('Spithead')).toBeInstanceOf(Object);
     })
